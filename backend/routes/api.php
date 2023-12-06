@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/notes', [NotesController::class, 'index']); // Retrieves all notes
+Route::get('/notes/{id}', [NoteController::class, 'show']); // Retrieves a single note by its ID
+Route::post('/notes', [NoteController::class, 'store']); // Creates a new note
+Route::put('/notes/{id}', [NoteController::class, 'update']); // Updates an existing note
+Route::delete('/notes/{id}', [NoteController::class, 'delete']); // Deletes a note
