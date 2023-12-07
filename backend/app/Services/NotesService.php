@@ -34,17 +34,16 @@ class NotesService
    *
    * @param array $data The data to create the note.
    *
-   * @return bool True if successful, false if an exception occurs.
+   * @return int|null The ID of the newly created note if successful, null if an exception occurs.
    */
-  public function createNote($data)
+  public function createNoteAndGetID($data)
   {
     try {
-      Notes::create($data);
+      $note = Notes::create($data);
+      return $note->note_id;
     } catch (Exception $e) {
-      return false;
+      return null;
     }
-
-    return true;
   }
 
   /**
@@ -70,7 +69,7 @@ class NotesService
   public function updateNote($id, $data)
   {
     try {
-      Notes::where('id', '=', $id)->updated($data);
+      Notes::where('note_id', '=', $id)->update($data);
     } catch (Exception $e) {
       return false;
     }
@@ -88,7 +87,7 @@ class NotesService
   public function deleteNote($id)
   {
     try {
-      Notes::where('id', '=', $id)->delete();
+      Notes::where('note_id', '=', $id)->delete();
     } catch (Exception $e) {
       return false;
     }

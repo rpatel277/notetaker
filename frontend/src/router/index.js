@@ -1,23 +1,28 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import NotesView from "../views/NotesView.vue";
+import NoteCreate from "../views/NoteCreate.vue";
+import NoteEdit from "../views/NoteEdit.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView
+      path: "/",
+      name: "Notes",
+      component: NotesView,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
-})
+      path: "/note/create",
+      name: "Create Note",
+      component: NoteCreate,
+    },
+    {
+      path: "/note/:note_id",
+      name: "Edit Note",
+      component: NoteEdit,
+      props: true,
+    },
+  ],
+});
 
-export default router
+export default router;

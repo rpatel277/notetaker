@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NoteStoreRequest;
-use App\Models\Notes;
 use App\Services\NotesService;
-use GrahamCampbell\ResultType\Success;
-use Illuminate\Http\Request;
 
 class NotesController extends Controller
 {
@@ -49,12 +46,13 @@ class NotesController extends Controller
     public function store(NoteStoreRequest $request)
     {
         $input = $request->validated();
-        $success = $this->notesService->createNote($input);
+        $note_id = $this->notesService->createNoteAndGetID($input);
 
-        if (!$success) {
+        if (!$note_id) {
             return response()->json(['message' => 'Something is broken'], 500);
         }
-        return response()->json(['message' => 'Note Added!'], 201);
+        return response()->json(['message' => 'Note Added!', 'note_id' => $note_id], 201)
+            ->header('Location', '/notes/' . $note_id);;
     }
 
     /**
