@@ -7,14 +7,19 @@ Hey there! This app is a neat little project crafted using Laravel to create a R
 The project contains two directories **backend** and **frontend** the _docker-compose.yml_ is within the backend directory. Below are the steps to built the docker containers and initialising the application.
 
 `cd backend`
+
 `docker-compose up -d`
+
 `docker-compose exec backend composer install`
+
 `docker-compose exec laravel php artisan migrate`
 
 The Laravel REST API is good to go, but here's the scoop: the frontend needs **npm** on your own computer for some reason. I'm having a bit of trouble exposing the Docker container port, so although the frontend is running on the server, you might not be able to access it from your local machine. One way around this hitch is to run the development server directly on your local system.
 
 `cd frontend`
+
 `npm install`
+
 `npm run dev`
 
 That's it the frontend application should be running on `http://localhost:8080`
