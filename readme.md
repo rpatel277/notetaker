@@ -31,10 +31,12 @@ That's it the backend application should be running on `http://localhost:80` thi
 To test the REST API follow the below steps:
 
 `cd backend`
+
 `docker-compose exec backend php artisan test`
 
 To test the VueJS application components (first time I actually tried this), it uses **vitest**.
 `cd frontend`
+
 `npm run test:unit`
 
 ## Future Scope
