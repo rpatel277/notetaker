@@ -73,7 +73,7 @@ class NotesController extends Controller
             return response()->json(['message' => 'Something is broken'], 500);
         }
 
-        return response()->json(['message' => 'Note Updated!'], 201);
+        return response()->json(['message' => 'Note Updated!'], 200);
     }
 
     /**
@@ -92,6 +92,6 @@ class NotesController extends Controller
             return response()->json(['message' => 'Something is broken'], 500);
         }
 
-        return response()->json(['message' => 'Note Deleted!'], 202);
+        return response()->json(null, 204);
     }
 }
