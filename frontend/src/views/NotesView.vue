@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-2 flex flex-wrap gap-5">
+  <div class="container p-2 flex flex-wrap gap-5" v-if="notes.length">
     <div
       class="w-60 h-60 flex flex-col justify-between bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-lg border border-yellow-400 mb-6 py-5 px-4"
       v-for="note of notes"
@@ -17,6 +17,16 @@
             ><Button label="Edit" variant="primary" class="bg-yellow-500 hover:bg-yellow-600"
           /></RouterLink>
         </div>
+      </div>
+    </div>
+  </div>
+  <div v-else>
+    <div class="grid place-content-center px-4">
+      <div class="text-center">
+        <h1 class="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Uh-oh!</h1>
+
+        <p class="mt-4 text-gray-500">It seems like you don't have any notes.</p>
+        <RouterLink to="/note/create"><Button label="Take a note" variant="primary" class="mt-2" /></RouterLink>
       </div>
     </div>
   </div>

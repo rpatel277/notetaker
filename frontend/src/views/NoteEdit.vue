@@ -81,7 +81,7 @@ async function editNoteAction() {
 async function deleteNoteAction() {
   try {
     const response = await deleteNote(props.note_id);
-    toast.notify("Success message", response.message, "success");
+    toast.notify("Success message", "Note Deleted!", "success");
     router.push("/");
   } catch (error) {
     if (error?.response?.status == 401) {
