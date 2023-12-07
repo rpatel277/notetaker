@@ -1,13 +1,9 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Controller;
 
-use App\Http\Controllers\NotesController;
-use App\Http\Requests\NoteStoreRequest;
 use App\Models\Notes;
-use App\Services\NotesService;
 use Illuminate\Http\Response;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class NotesControllerTest extends TestCase
