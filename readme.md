@@ -35,6 +35,7 @@ To test the REST API follow the below steps:
 `docker-compose exec backend php artisan test`
 
 To test the VueJS application components (first time I actually tried this), it uses **vitest**.
+
 `cd frontend`
 
 `npm run test:unit`
